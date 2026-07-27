@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tashkent Gumma</title>
+    <!-- Подключаем отдельный файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ШАПКА САЙТА -->
+    <header>
+        <div class="logo-container">
+            <!-- ИЗМЕНИТЕ ЛОГОТИП: путь к вашей картинке логотипа -->
+            <img src="photo/picnic_9582545.png" alt="Логотип Tashkent Gumma">
+            <!-- ИЗМЕНИТЕ НАЗВАНИЕ КАФЕ: -->
+            <h1>Tashkent Gumma</h1>
+        </div>
+    </header>
+
+    <!-- СЛАЙДЕР С ФОТОГРАФИЯМИ -->
+    <section class="slider-section">
+        <div class="slider-text">
+            <h2>Сочные и хрустящие гуммы</h2>
+            <p>Традиционный вкус в современной подаче</p>
+        </div>
+        <!-- ИЗМЕНИТЕ ФОТО ДЛЯ СЛАЙДЕРА: меняйте ссылки в src="" -->
+        <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide active" alt="Интерьер">
+        <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide" alt="Еда">
+        <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide" alt="Атмосфера">
+    </section>
+
+    <!-- МЕНЮ -->
+    <section class="menu-section">
+        <h2 class="menu-title">Наше Меню</h2>
+        <div class="menu-grid">
+
+            <!-- ТОВАР 1 -->
+            <div class="menu-item">
+                <img src="photo/256f3c9f-1b7a-41a7-bbb8-0ed7d9aa9745-0-0-0-0-1744797105.webp" alt="Гумма с мясом">
+                <div class="menu-info">
+                    <h3>Гумма с мясом (Классическая)</h3>
+                    <p>Хрустящее тесто, сочное мясное наполнение с луком и специями.</p>
+                    <div class="price">12 000 сум</div>
+                </div>
+            </div>
+
+            <!-- ТОВАР 2 -->
+            <div class="menu-item">
+                <img src="photo/M_height.jfif" alt="Фирменный чай">
+                <div class="menu-info">
+                    <h3>Фирменный чай с лимоном</h3>
+                    <p>Горячий зеленый или черный чай для идеального сочетания.</p>
+                    <div class="price">4 000 сум</div>
+                </div>
+            </div>
+
+            <!-- ТОВАР 3 -->
+            <div class="menu-item">
+                <img src="photo/c3f021d6-153d-4791-8e00-c8793f0898bf.webp" alt="Ассорти гуммы">
+                <div class="menu-info">
+                    <h3>Сет «Посыльный» (4 шт.)</h3>
+                    <p>Большая порция хрустящих гумм для компании.</p>
+                    <div class="price">45 000 сум</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+            <img src="photo/871a0a216147259.Y3JvcCwxNjgzLDEzMTYsMCww.jpg" alt="Cola">
+                 <div class="menu-info">
+                <h3>Кока-Кола</h3>
+                <p>Освежающий газированный напиток.</p>
+                <div class="price">5 000 сум</div>
+                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- СКРИПТ ДЛЯ РАБОТЫ СЛАЙДЕРА -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>
