@@ -1,22 +1,51 @@
-/* БАЗОВЫЕ НАСТРОЙКИ */
+/* =====================================================
+   ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
+   Палитра вдохновлена уличной едой и ташкентским базаром:
+   тёплое "тесто" на фоне, тёмный "гриль-уголь" и бирюза базарной плитки
+   ===================================================== */
+:root {
+    --ink: #241C15;         /* тёмный уголь — текст, шапка, фон слайдера */
+    --paper: #F5E6C8;       /* тёплое "тесто" — фон страницы */
+    --surface: #FFFDF8;     /* карточки товаров */
+    --teal: #0E7C86;        /* бирюза — акцент (карточки, ценники) */
+    --teal-deep: #0A5C64;   /* бирюза потемнее — для текста на светлом фоне */
+    --gold: #E8A23D;        /* золото жареного теста — акцент на тёмном фоне */
+    --text-muted: #6B5D48;  /* приглушённый текст описаний */
+    --border: #E8D6AE;      /* тонкая рамка карточек */
+    --shadow-sm: 0 2px 12px rgba(36, 28, 21, 0.08);
+    --shadow-md: 0 16px 36px rgba(36, 28, 21, 0.16);
+    --radius: 16px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-body {
-    background-color: #f8f9fa;
-    color: #333;
 }
 
-/* ШАПКА САЙТА (Верхний левый угол) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Manrope', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+}
+
+/* ===== ШАПКА САЙТА ===== */
 header {
-    background-color: #ffffff;
-    padding: 15px 30px;
+    background-color: var(--ink);
+    padding: 14px 40px;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
     position: fixed;
     width: 100%;
     top: 0;
@@ -25,105 +54,362 @@ header {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
 }
 .logo-container img {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--teal);
 }
 .logo-container h1 {
-    font-size: 24px;
-    color: #2c3e50;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--paper);
 }
 
-/* СЛАЙДЕР ФОТОГРАФИЙ */
+/* Навигация по разделам меню */
+.site-nav {
+    display: flex;
+    gap: 26px;
+}
+.site-nav a {
+    text-decoration: none;
+    color: var(--paper);
+    opacity: 0.82;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    padding: 6px 2px;
+    transition: opacity 0.25s ease, color 0.25s ease;
+}
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.25s ease;
+}
+.site-nav a:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+.site-nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== СЛАЙДЕР ФОТОГРАФИЙ ===== */
 .slider-section {
-    margin-top: 80px;
+    margin-top: 76px;
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 420px;
     overflow: hidden;
-    background-color: #000;
+    background-color: var(--ink);
 }
 .slide {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s ease-in-out;
     object-fit: cover;
 }
 .slide.active {
     opacity: 1;
 }
-
+/* Тёмный градиент снизу — чтобы текст было хорошо видно на любом фото */
+.slider-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(36,28,21,0) 40%, rgba(36,28,21,0.85) 100%);
+    z-index: 5;
+    pointer-events: none;
+}
 .slider-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
+    left: 36px;
+    bottom: 36px;
+    max-width: 420px;
+    color: var(--surface);
+    text-align: left;
     z-index: 10;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+.slider-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
 }
 .slider-text h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+}
+.slider-text p {
+    font-size: 15px;
+    opacity: 0.9;
 }
 
-/* МЕНЮ КАФЕ */
+/* ===== МЕНЮ КАФЕ ===== */
 .menu-section {
-    padding: 50px 20px;
+    padding: 64px 24px 96px;
     max-width: 1200px;
     margin: 0 auto;
 }
+.menu-heading {
+    margin-bottom: 52px;
+}
+.menu-eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-deep);
+    margin-bottom: 10px;
+}
 .menu-title {
-    text-align: center;
-    margin-bottom: 40px;
+    font-family: 'Unbounded', sans-serif;
     font-size: 32px;
-    color: #2c3e50;
+    font-weight: 700;
 }
 
+/* -- Кнопки-переключатели разделов меню (Еда / Напитки) -- */
+.menu-tabs {
+    display: inline-flex;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px;
+    margin-bottom: 44px;
+    box-shadow: var(--shadow-sm);
+}
+.menu-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.menu-tab-icon {
+    font-size: 17px;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+.menu-tab:hover {
+    color: var(--ink);
+}
+.menu-tab.active {
+    background: var(--teal);
+    color: var(--surface);
+    box-shadow: 0 8px 20px rgba(14, 124, 134, 0.35);
+}
+.menu-tab.active:hover {
+    color: var(--surface);
+}
+.menu-tab:active {
+    transform: scale(0.97);
+}
+.menu-tab:focus-visible {
+    outline: 2px solid var(--teal-deep);
+    outline-offset: 3px;
+}
+
+/* -- Разделы "Еда" и "Напитки" -- */
+.menu-category {
+    margin-bottom: 0;
+    scroll-margin-top: 96px; /* чтобы шапка не перекрывала заголовок при переходе по ссылке */
+}
+.menu-category[hidden] {
+    display: none;
+}
+.menu-category.is-visible {
+    animation: menuFadeIn 0.45s ease;
+}
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.category-heading h3 {
+    display: inline-block;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 30px;
+}
+.category-heading h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 52px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--teal);
+}
+
+/* -- Карточки товаров -- */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+    gap: 28px;
 }
 .menu-item {
-    background: white;
-    border-radius: 15px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .menu-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
 }
 .menu-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.menu-item:hover img {
+    transform: scale(1.06);
 }
 .menu-info {
-    padding: 20px;
-    text-align: center;
+    padding: 20px 20px 24px;
 }
-.menu-info h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
+.menu-info h4 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
 }
 .menu-info p {
-    color: #7f8c8d;
+    color: var(--text-muted);
     font-size: 14px;
-    margin-bottom: 15px;
+    line-height: 1.5;
+    margin-bottom: 16px;
 }
+
+/* Цена в виде рыночного ценника — фирменная деталь меню */
 .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e67e22;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: var(--teal);
+    color: var(--surface);
+    font-weight: 800;
+    font-size: 15px;
+    padding: 7px 16px 7px 22px;
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+}
+.price::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--surface);
+}
+
+/* ===== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ ЭКРАНЫ) ===== */
+@media (max-width: 600px) {
+    header {
+        padding: 12px 20px;
+    }
+    .logo-container img {
+        width: 38px;
+        height: 38px;
+    }
+    .logo-container h1 {
+        font-size: 15px;
+    }
+    .site-nav {
+        gap: 16px;
+    }
+    .site-nav a {
+        font-size: 13px;
+    }
+    .slider-section {
+        height: 360px;
+    }
+    .slider-text {
+        left: 20px;
+        bottom: 24px;
+        max-width: 82%;
+    }
+    .slider-text h2 {
+        font-size: 24px;
+    }
+    .slider-text p {
+        font-size: 13px;
+    }
+    .menu-title {
+        font-size: 25px;
+    }
+    .category-heading h3 {
+        font-size: 20px;
+    }
+    .menu-tabs {
+        display: flex;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    .menu-tab {
+        flex: 1;
+        justify-content: center;
+        padding: 11px 14px;
+        font-size: 13px;
+    }
+}
+
+/* Уважаем настройку "уменьшить анимацию" в системе пользователя */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .menu-item,
+    .menu-item img,
+    .site-nav a::after,
+    .menu-tab {
+        transition: none;
+    }
+    .menu-category.is-visible {
+        animation: none;
+    }
 }

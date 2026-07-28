@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tashkent Gumma</title>
+    <!-- Шрифты Google Fonts: Unbounded — плотный "вывесочный" шрифт для заголовков, Manrope — для текста -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Подключаем отдельный файл стилей -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,64 +21,218 @@
             <!-- ИЗМЕНИТЕ НАЗВАНИЕ КАФЕ: -->
             <h1>Tashkent Gumma</h1>
         </div>
+        <!-- НАВИГАЦИЯ: быстрый переход к разделам меню -->
+        <nav class="site-nav">
+            <a href="#food">Food</a>
+            <a href="#drinks">Drinks</a>
+        </nav>
     </header>
 
     <!-- СЛАЙДЕР С ФОТОГРАФИЯМИ -->
     <section class="slider-section">
-        <div class="slider-text">
-            <h2>Сочные и хрустящие гуммы</h2>
-            <p>Традиционный вкус в современной подаче</p>
-        </div>
         <!-- ИЗМЕНИТЕ ФОТО ДЛЯ СЛАЙДЕРА: меняйте ссылки в src="" -->
         <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide active" alt="Интерьер">
         <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide" alt="Еда">
         <img src="photo/57600-gumma__fpbmw-684x520.jpg" class="slide" alt="Атмосфера">
+        <div class="slider-text">
+            <h2>Juicy and crunchy gums</h2>
+            <p>Traditional taste in a modern presentation</p>
+        </div>
     </section>
 
     <!-- МЕНЮ -->
     <section class="menu-section">
-        <h2 class="menu-title">Наше Меню</h2>
-        <div class="menu-grid">
+        <div class="menu-heading">
+            <span class="menu-eyebrow">Frying fresh every day</span>
+            <h2 class="menu-title">Our Menu</h2>
+        </div>
 
-            <!-- ТОВАР 1 -->
-            <div class="menu-item">
-                <img src="photo/256f3c9f-1b7a-41a7-bbb8-0ed7d9aa9745-0-0-0-0-1744797105.webp" alt="Гумма с мясом">
-                <div class="menu-info">
-                    <h3>Гумма с мясом (Классическая)</h3>
-                    <p>Хрустящее тесто, сочное мясное наполнение с луком и специями.</p>
-                    <div class="price">12 000 сум</div>
+        <!-- ПЕРЕКЛЮЧАТЕЛЬ РАЗДЕЛОВ МЕНЮ (кнопки Еда / Напитки) -->
+        <div class="menu-tabs" role="tablist" aria-label="Разделы меню">
+            <button type="button" class="menu-tab active" data-target="food" role="tab" aria-selected="true">
+                <span class="menu-tab-icon">🥟</span>
+                <span>Food</span>
+            </button>
+            <button type="button" class="menu-tab" data-target="drinks" role="tab" aria-selected="false">
+                <span class="menu-tab-icon">🥤</span>
+                <span>Drinks</span>
+            </button>
+        </div>
+
+        <!-- ===== РАЗДЕЛ: ЕДА ===== -->
+        <div class="menu-category is-visible" id="food">
+            <div class="category-heading">
+                <h3>Food</h3>
+            </div>
+            <div class="menu-grid">
+
+                <!-- ТОВАР 1 -->
+                <div class="menu-item">
+                    <img src="photo/M_height.jfif" alt="Gumma with Meat">
+                    <div class="menu-info">
+                        <h4>Gumma with Meat (Classic)</h4>
+                        <p>Хрустящее тесто, сочное мясное наполнение с луком и специями.</p>
+                        <div class="price">4 000 сум</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- ТОВАР 2 -->
-            <div class="menu-item">
-                <img src="photo/M_height.jfif" alt="Фирменный чай">
-                <div class="menu-info">
-                    <h3>Фирменный чай с лимоном</h3>
-                    <p>Горячий зеленый или черный чай для идеального сочетания.</p>
-                    <div class="price">4 000 сум</div>
+                <!-- ТОВАР 2 -->
+                <div class="menu-item">
+                    <img src="photo/c3f021d6-153d-4791-8e00-c8793f0898bf.webp" alt="Sausage in dough">
+                    <div class="menu-info">
+                        <h4>Sausage in dough</h4>
+                        <p>Deep-fried sausage in dough</p>
+                        <div class="price">3 000 сум</div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- ТОВАР 3 -->
-            <div class="menu-item">
-                <img src="photo/c3f021d6-153d-4791-8e00-c8793f0898bf.webp" alt="Ассорти гуммы">
-                <div class="menu-info">
-                    <h3>Сет «Посыльный» (4 шт.)</h3>
-                    <p>Большая порция хрустящих гумм для компании.</p>
-                    <div class="price">45 000 сум</div>
+                <div class="menu-item">
+                    <img src="photo/256f3c9f-1b7a-41a7-bbb8-0ed7d9aa9745-0-0-0-0-1744797105.webp" alt="Somsa with Potato">
+                    <div class="menu-info">
+                        <h4>Somsa with Potato</h4>
+                        <p><b>Potato</b> wrapped in crispy dough.
+                        </p>
+                        <div class="price">4 000 сум</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="menu-item">
-            <img src="photo/871a0a216147259.Y3JvcCwxNjgzLDEzMTYsMCww.jpg" alt="Cola">
-                 <div class="menu-info">
-                <h3>Кока-Кола</h3>
-                <p>Освежающий газированный напиток.</p>
-                <div class="price">5 000 сум</div>
-                 </div>
-            </div>
+                <div class="menu-item">
+                    <img src="photo/256f3c9f-1b7a-41a7-bbb8-0ed7d9aa9745-0-0-0-0-1744797105.webp" alt="Somsa with Meat">
+                    <div class="menu-info">
+                        <h4>Somsa with Meat</h4>
+                        <p><b>Meat</b> wrapped in crispy dough.</p>
+                        <div class="price">5 000 сум</div>
+                    </div>
 
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/fitchi.jpg" alt="Fried dough with a meat.">
+                    <div class="menu-info">
+                        <h4>Fitchi</h4>
+                        <p>Fried dough with a meat.</p>
+                        <div class="price">8 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/" alt="Your Dish">
+                    <div class="menu-info">
+                        <h4>Your Dish</h4>
+                        <p>Description of your dish.</p>
+                        <div class="price">Your Price</div>
+                    </div>
+                </div>
+
+                <!-- Чтобы добавить новое блюдо: скопируйте блок div.menu-item целиком и вставьте сюда, поменяв фото, название, описание и цену -->
+
+            </div>
+        </div>
+
+        <!-- ===== РАЗДЕЛ: НАПИТКИ ===== -->
+        <div class="menu-category" id="drinks" hidden>
+            <div class="category-heading">
+                <h3>Drinks</h3>
+            </div>
+            <div class="menu-grid">
+
+
+                <!-- ТОВАР 4 -->
+                <div class="menu-item">
+                    <img src="photo/871a0a216147259.Y3JvcCwxNjgzLDEzMTYsMCww.jpg" alt="Cola">
+                    <div class="menu-info">
+                        <h4><b>Bottled</b> Coca-Cola</h4>
+                        <p></p>
+                        <div class="price">4 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/kola-0.5.png" alt="0,5 Cola">
+                    <div class="menu-info">
+                        <h4><b>0,5</b> Coca-Cola</h4>
+                        <p></p>
+                        <div class="price">8 000 сум</div>
+                    </div>
+
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/Fanta_Portocale_Orange_0.5L.webp" alt=" 0,5 Fanta">
+                    <div class="menu-info">
+                        <h4><b>0,5</b> Fanta Fanta</h4>
+                        <p></p>
+                        <div class="price">8 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/images (1).jfif" alt="0,5 Sprite">
+                    <div class="menu-info">
+                        <h4><b>0,5</b> Sprite</h4>
+                        <p></p>
+                        <div class="price">8 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/images (2).jfif" alt="0,5 Fuse-Tea">
+                    <div class="menu-info">
+                        <h4><b>0,5</b> Fuse-Tea</h4>
+                        <p></p>
+                        <div class="price">8 000 сум</div>
+                    </div>  
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/1a5e223716169887992f7286c57eeb4d.jpeg" alt="0,5 non-carbonated water">
+                    <div class="menu-info">
+                        <h4><b>0,5</b> non-carbonated water</h4>
+                        <p></p>
+                        <div class="price">4 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/Fresh_ayran.jpg" alt="0,5 Ayran">
+                    <div class="menu-info">
+                        <h4>Bakal Ayran</h4>
+                        <p></p>
+                        <div class="price">5 000 сум</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="photo/orig.webp" alt="3 in 1 Coffee">
+                    <div class="menu-info">
+                        <h4>3 in 1 Coffee</h4>
+                        <p></p>
+                        <div class="price">5 000 сум</div>
+                    </div>
+                </div>
+                 
+                <div class="menu-item">
+                    <img src="photo/1313355396_F7E5F0EDFBE920EAEEF4E5.jpg" alt="Black Coffee">
+                    <div class="menu-info">
+                        <h4>Black Coffee</h4>
+                        <p></p>
+                        <div class="price">4 000 сум</div>
+                    </div>
+                </div>
+
+
+                <div class="menu-item">
+                    <img src="photo/346977977453314.webp" alt="Tea Bag">
+                    <div class="menu-info">
+                        <h4>Tea Bag</h4>
+                        <p></p>
+                        <div class="price">2 000 сум</div>
+                    </div>
+                </div>
+
+
+                <!-- Чтобы добавить новый напиток: скопируйте блок div.menu-item целиком и вставьте сюда -->
+
+            </div>
         </div>
     </section>
 
@@ -90,6 +248,36 @@
         }
 
         setInterval(nextSlide, 3000);
+    </script>
+
+    <!-- СКРИПТ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ВКЛАДОК МЕНЮ (Еда / Напитки) -->
+    <script>
+        const tabs = document.querySelectorAll('.menu-tab');
+        const categories = document.querySelectorAll('.menu-category');
+
+        function showCategory(targetId) {
+            categories.forEach(cat => {
+                cat.hidden = cat.id !== targetId;
+                cat.classList.toggle('is-visible', cat.id === targetId);
+            });
+            tabs.forEach(tab => {
+                const isActive = tab.dataset.target === targetId;
+                tab.classList.toggle('active', isActive);
+                tab.setAttribute('aria-selected', isActive);
+            });
+        }
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => showCategory(tab.dataset.target));
+        });
+
+        // Ссылки в шапке (#food / #drinks) тоже переключают нужную вкладку
+        document.querySelectorAll('.site-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('href').replace('#', '');
+                showCategory(targetId);
+            });
+        });
     </script>
 </body>
 </html>
